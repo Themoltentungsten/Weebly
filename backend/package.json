@@ -1,0 +1,26 @@
+{
+  "name": "weebly-backend",
+  "version": "1.0.0",
+  "description": "Weebly anime streaming backend",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "seed": "node seed.js",
+    "migrate:anilist": "node migrate_anilist_columns.js",
+    "enrich:anilist": "node scripts/enrichFromAnilist.js",
+    "verify:posters": "node scripts/verifyAnilistPosters.js",
+    "fix:posters": "node scripts/applyPosterCorrections.js",
+    "migrate:carousel": "node migrate_carousel_poster.js",
+    "dev": "node server.js"
+  },
+  "dependencies": {
+    "@google/generative-ai": "^0.24.0",
+    "bcrypt": "^5.1.1",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.7",
+    "express": "^4.21.2",
+    "groq-sdk": "^0.9.0",
+    "jsonwebtoken": "^9.0.2",
+    "pg": "^8.13.1"
+  }
+}
