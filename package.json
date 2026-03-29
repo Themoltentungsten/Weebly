@@ -10,9 +10,6 @@
     "db:shell": "node scripts/db-shell.js",
     "db:web": "node scripts/db-web.js"
   },
-  "dependencies": {
-    "@vendia/serverless-express": "^4.12.6"
-  },
   "devDependencies": {
     "concurrently": "^9.1.2",
     "dotenv": "^16.4.7"
