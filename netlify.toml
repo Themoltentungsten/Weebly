@@ -1,14 +1,10 @@
 [build]
-  command = "npm install && cd backend && npm install && cd ../frontend && npm install && npm run build"
-  publish = "frontend/dist"
+  base = "frontend"
+  command = "npm install && npm run build"
+  publish = "dist"
 
 [build.environment]
   NODE_VERSION = "20"
-
-[functions]
-  directory = "netlify/functions"
-  node_bundler = "nft"
-  included_files = ["backend/**"]
 
 [[redirects]]
   from = "/*"
