@@ -1,4 +1,9 @@
 const serverless = require('serverless-http');
 const app = require('../../backend/server');
 
-module.exports.handler = serverless(app);
+const handler = serverless(app);
+
+module.exports.handler = async (event, context) => {
+  context.callbackWaitsForEmptyEventLoop = false;
+  return handler(event, context);
+};
