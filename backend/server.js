@@ -50,6 +50,10 @@ app.get('/api/health', (req, res) => {
   res.json({ status: 'ok', timestamp: new Date().toISOString() });
 });
 
-app.listen(PORT, () => {
-  console.log(`Weebly backend running on http://localhost:${PORT}`);
-});
+if (!process.env.NETLIFY) {
+  app.listen(PORT, () => {
+    console.log(`Weebly backend running on http://localhost:${PORT}`);
+  });
+}
+
+module.exports = app;
