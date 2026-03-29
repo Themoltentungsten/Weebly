@@ -11,7 +11,7 @@
     "db:web": "node scripts/db-web.js"
   },
   "dependencies": {
-    "serverless-http": "^4.0.0"
+    "@vendia/serverless-express": "^4.12.6"
   },
   "devDependencies": {
     "concurrently": "^9.1.2",
