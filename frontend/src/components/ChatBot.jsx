@@ -3,6 +3,7 @@ import { motion, AnimatePresence } from 'framer-motion'
 import api from '../api/client'
 import { normalizeAnime } from '../utils/anime'
 import toast from 'react-hot-toast'
+import ScrollRow from './ScrollRow'
 
 export default function ChatBot({ onOpenAnime }) {
   const [open, setOpen] = useState(false)
@@ -87,7 +88,7 @@ export default function ChatBot({ onOpenAnime }) {
               {loading && <div className="chat-bubble bot">Thinking…</div>}
             </div>
             {cards.length > 0 && (
-              <div className="chat-cards">
+              <ScrollRow className="chat-cards">
                 {cards.map((a) => (
                   <button key={a.id} type="button" className="chat-card" onClick={() => onOpenAnime(a)}>
                     <img src={a.poster} alt="" />
@@ -95,7 +96,7 @@ export default function ChatBot({ onOpenAnime }) {
                     <span className="chat-card-rating">{a.rating}/10</span>
                   </button>
                 ))}
-              </div>
+              </ScrollRow>
             )}
             <div className="chat-input-row">
               <input

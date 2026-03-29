@@ -1,3 +1,5 @@
+import ScrollRow from './ScrollRow'
+
 function formatRelationType(s) {
   if (!s) return ''
   return s.replace(/_/g, ' ').replace(/\b\w/g, (c) => c.toUpperCase())
@@ -48,7 +50,7 @@ export default function AnimeAnilistExtras({ data, loading, error }) {
       {relations.length > 0 && (
         <section className="anix-section">
           <h3 className="anix-heading">Relations</h3>
-          <div className="anix-scroll anix-relations">
+          <ScrollRow className="anix-scroll anix-relations">
             {relations.map((r) => (
               <a
                 key={`${r.relationType}-${r.id}-${r.title}`}
@@ -64,7 +66,7 @@ export default function AnimeAnilistExtras({ data, loading, error }) {
                 <span className="anix-rel-title">{r.title}</span>
               </a>
             ))}
-          </div>
+          </ScrollRow>
         </section>
       )}
 
@@ -154,7 +156,7 @@ export default function AnimeAnilistExtras({ data, loading, error }) {
       {recommendations.length > 0 && (
         <section className="anix-section">
           <h3 className="anix-heading">Recommendations</h3>
-          <div className="anix-scroll anix-recs">
+          <ScrollRow className="anix-scroll anix-recs">
             {recommendations.map((rec) => (
               <a
                 key={rec.anilistId}
@@ -167,7 +169,7 @@ export default function AnimeAnilistExtras({ data, loading, error }) {
                 <span className="anix-rec-title">{rec.title}</span>
               </a>
             ))}
-          </div>
+          </ScrollRow>
         </section>
       )}
     </div>
