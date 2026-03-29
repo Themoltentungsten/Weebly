@@ -44,3 +44,6 @@ temp/
 /anime_dataset.xlsx
 /image.png
 /weebly.png
+
+# Local Netlify folder
+.netlify
