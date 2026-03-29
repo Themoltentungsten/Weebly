@@ -16,10 +16,29 @@ const defaultOrigins = [
   'http://localhost:3000',
   'http://127.0.0.1:3000',
 ];
-const corsOrigins = process.env.CORS_ORIGINS
+
+const extraOrigins = process.env.CORS_ORIGINS
   ? process.env.CORS_ORIGINS.split(',').map((s) => s.trim()).filter(Boolean)
-  : defaultOrigins;
-app.use(cors({ origin: corsOrigins, credentials: true }));
+  : [];
+
+function isAllowedOrigin(origin) {
+  if (!origin) return true;
+  if (defaultOrigins.includes(origin)) return true;
+  if (extraOrigins.includes(origin)) return true;
+  try {
+    const { hostname } = new URL(origin);
+    if (hostname.endsWith('.netlify.app')) return true;
+  } catch {
+    /* ignore */
+  }
+  return false;
+}
+
+if (process.env.CORS_ALLOW_ALL === '1' || process.env.CORS_ALLOW_ALL === 'true') {
+  app.use(cors({ origin: true, credentials: true }));
+} else {
+  app.use(cors({ origin: isAllowedOrigin, credentials: true }));
+}
 app.use(express.json());
 
 app.use('/api/anime', animeRoutes);

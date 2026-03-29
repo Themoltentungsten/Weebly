@@ -60,6 +60,12 @@ TheWeebly/
 
 ---
 
+## Cloud deployment (Netlify + Render)
+
+Netlify hosts the **Vite frontend**; the **Express API**, **PostgreSQL**, and **AI keys** run on **Render** (or similar). See **[DEPLOYMENT.md](./DEPLOYMENT.md)** for step-by-step GitHub → Render → Netlify setup, `VITE_API_URL`, one-time `seed.js`, and troubleshooting the mood bot in production.
+
+---
+
 ## Quick Start (step by step)
 
 ### 1. Clone / open the project

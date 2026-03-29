@@ -1,0 +1,24 @@
+# Render Blueprint — deploy the Express API + link a PostgreSQL database in the Render dashboard.
+# Docs: https://render.com/docs/blueprint-spec
+#
+# After the first deploy, open the service Shell and run once:
+#   node seed.js
+# (creates tables, seeds anime, admin user admin@weebly.com / admin123)
+
+services:
+  - type: web
+    name: weebly-api
+    runtime: node
+    plan: free
+    rootDir: backend
+    buildCommand: npm install
+    startCommand: npm start
+    healthCheckPath: /api/health
+    envVars:
+      - key: NODE_VERSION
+        value: "20"
+      # Render injects PORT automatically — do not override.
+      # Set these in the Render dashboard → Environment:
+      # DATABASE_URL — from Render PostgreSQL "Internal Database URL" or External
+      # JWT_SECRET — long random string
+      # GEMINI_API_KEY / GROQ_API_KEY — optional; bot falls back to catalog mode without them

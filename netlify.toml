@@ -1,7 +1,11 @@
+# Netlify = frontend only. Set VITE_API_URL (Build env) to your Render API URL — see DEPLOYMENT.md
 [build]
   base = "frontend"
   command = "npm install && npm run build"
   publish = "frontend/dist"
+
+[build.environment]
+  NODE_VERSION = "20"
 
 [[redirects]]
   from = "/*"
